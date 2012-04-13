@@ -1,19 +1,16 @@
-<ul>
-
-  <li>
+<div>
     <%= form.label :email, Typus.user_class.human_attribute_name(:email) %>
     <%= form.text_field :email, :size => 20, :class => "text", :autofocus => 'autofocus' %>
-  </li>
+  </div>
 
   <% if controller.controller_name == 'session' %>
-    <li>
+    <div>
       <%= form.label :password, Typus.user_class.human_attribute_name(:password) %>
       <%= form.password_field :password, :size => 20, :class => "text" %>
-    </li>
+    </div>
   <% end %>
 
-  <li>
+  <div>
     <%= form.submit Typus::I18n.t(submit_text), :class => "button", :disable_with => Typus::I18n.t("Sending data ...") %>
-  </li>
+  </div>
 
-</ul>
