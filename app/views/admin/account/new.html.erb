@@ -3,19 +3,16 @@
   admin_title(page_title)
 %>
 
-<%= form_for :typus_user, :url => { :action => :create } do |form| %>
+<%= form_for :typus_user, :url => { :action => :create }, :html => {:class => 'well'} do |form| %>
 
-  <ul>
-
-    <li>
+    <div>
       <%= form.label :email, Typus.user_class.human_attribute_name(:email) %>
       <%= form.text_field :email, :size => 20, :class => "text", :autofocus => 'autofocus' %>
-    </li>
+    </div>
 
-    <li>
-      <%= submit_tag Typus::I18n.t("Sign up"), :class => "button", :disable_with => Typus::I18n.t("Sending data ...") %>
-    </li>
+    <div>
+      <%= submit_tag Typus::I18n.t("Sign up"), :class => "btn", :disable_with => Typus::I18n.t("Sending data ...") %>
+    </div>
 
-  </ul>
 
 <% end %>
