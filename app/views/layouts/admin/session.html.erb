@@ -28,7 +28,7 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <%= display_flash_message %>
+      <%= admin_display_flash_message %>
       <%= yield :layout %>
       <% if content_for?(:actions) %>
         <div id="actions">
@@ -44,7 +44,7 @@
 
     <div id="box">
       <h1 class="logo"><%= Typus.admin_title %></h1>
-      <%= display_flash_message %>
+      <%#= display_flash_message %>
       <%= yield :layout %>
     </div>
 
