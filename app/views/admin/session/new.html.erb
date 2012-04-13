@@ -1,6 +1,6 @@
 <%
   page_title = Typus::I18n.t("Sign in")
-  title(page_title)
+  admin_title(page_title)
 %>
 <h2>Sign in</h2>
 <%= form_for :typus_user, :url => { :action => :create, :back_to => params[:back_to] }, :html => {:class => 'well'} do |form| %>
