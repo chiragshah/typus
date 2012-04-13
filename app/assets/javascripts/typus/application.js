@@ -6,4 +6,7 @@
 //= require typus/jquery.application
 //= require typus/custom
 //= require typus/bootstrap
+//= require typus/bootstrap-dropdown
+//= require typus/bootstrap-tooltip
+//= require typus/bootstrap-alert
 //= require chosen.jquery
