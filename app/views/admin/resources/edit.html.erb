@@ -1,6 +1,6 @@
 <%
   page_title = Typus::I18n.t("Edit %{resource}", :resource => @resource.model_name.human)
-  admin_title(page_title)
+  title(page_title)
 %>
 
 <% content_for :main_grid do %>
@@ -24,19 +24,19 @@
     </script>
   <% end %>
 
-  <%= admin_display_flash_message %>
+  <%= display_flash_message %>
   <%= render 'edit' %>
 
   <% locals = { :options => params.dup.cleanup.merge!(:action => 'update') } %>
   <%= render 'form', locals %>
 
-  <%= typus_relationships unless headless_mode? %>
+  <%#= typus_relationships unless headless_mode? %>
 <% end %>
-
+<!--
 <div class="grid_2">
-  <%= build_sidebar || render("admin/templates/profile_sidebar") %>
+  <%#= build_sidebar || render("admin/templates/profile_sidebar") %>
 </div>
-
+-->
 <div class="grid_8">
   <%= yield :main_grid %>
 </div>

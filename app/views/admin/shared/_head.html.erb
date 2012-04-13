@@ -6,8 +6,12 @@
 
 <title><%= Typus.admin_title %> &mdash; <%= yield :title %></title>
 
-<%= stylesheet_link_tag 'typus/application' %>
+<%= stylesheet_link_tag 'typus-admin/application' %>
+<%#= stylesheet_link_tag "application", :media => "all" %>
+<%= stylesheet_link_tag "chosen","jquery.fancybox-1.3.4" %>
 <%= javascript_include_tag 'typus/application' %>
+<%= javascript_include_tag '/assets/bootstrap-dropdown' %>
+<%= javascript_include_tag '/assets/bootstrap-tooltip' %>
 
 <%= yield :stylesheets -%>
 <%= yield :javascripts -%>

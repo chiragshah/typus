@@ -4,46 +4,128 @@
 
 <head>
   <%= render 'admin/shared/head' %>
+  <script>
+    $('.dropdown-toggle').dropdown();
+    jQuery(function(){jQuery('.tool-tip').tooltip('hide');});
+  </script>
 </head>
 
 <body>
+<%
+  applications = admin_user.applications
 
+  # Detect if we are inside an application.
+  if (application = params[:application])
+    applications.each do |app|
+      if app.parameterize == application
+        applications = [app]
+      end
+    end
+    page_title = applications.first
+  end
+%>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/admin">Requestz Admin Panel</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <%= apps.gsub('<ul>','').gsub('</ul>','').html_safe %>
+          </ul>
+    <ul class="nav nav-pills">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Models<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <% if applications.any? %>
+            <% applications.each do |app| %>
+              <% table_header = application ? "Models" : app %>
+              <% admin_user.application(app).map(&:constantize).each do |klass| %>
+                <% if klass.typus_options_for(:hide_from_dashboard) == false %>
+                  <li><%= link_to klass.model_name.human.pluralize, :controller => "/admin/#{klass.to_resource}" %></li>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+          <ul class="nav pull-right">
+            <%= login_info.gsub('<ul>','').gsub('</ul>','').html_safe %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
   <div id="wrapper">
 
     <div id="header">
       <div class="container_12">
         <div class="grid_12 title">
-          <%= admin_header %>
+          <%#= admin_header %>
         </div>
 
         <div class="grid_8 applications">
-          <%= admin_apps %>
+          <%#= apps %>
         </div>
 
         <div class="grid_4 profile">
-          <%= admin_login_info %>
+          <%#= login_info %>
         </div>
       </div>
     </div>
-
+-->
+<div class="container">
+  <div class="row">
+    <!-- <div class="span3"><%#= yield :left_side %></div> -->
+    <div class="span12"><%= yield :layout %></div>
+  </div>
+</div>
+<!--
     <div id="content">
       <div class="container_12">
-        <%= yield :layout %>
+        <%#= yield :layout %>
       </div>
     </div>
 
+-->
+  <div class="navbar navbar-fixed-bottom">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#"></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li>Powered By Requestz</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
     <div id="footer">
       <div class="container_12">
         <div class="grid_12">
           <span class="copyright">
-            Powered by <%= link_to "Typus", "http://core.typuscmf.com/" %> &#183; <%= Typus.admin_sub_title.html_safe %>
+            Powered by <%#= link_to "Typus", "http://core.typuscmf.com/" %> &#183; <%= Typus.admin_sub_title.html_safe %>
           </span>
         </div>
       </div>
     </div>
-
   </div>
-
+-->
 </body>
 
 </html>

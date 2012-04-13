@@ -1,30 +1,32 @@
 <%
   page_title = @resource.model_name.human.pluralize
-  admin_title(page_title)
+  title(page_title)
 %>
 
 <% content_for :main_grid do %>
 
   <h2>
     <%= page_title %>
-    <small><%= list_actions %></small>
   </h2>
+  <span style="float:right;"><%= list_actions %></span><i class="icon-plus" style="float:right;"></i>
 
-  <%= admin_display_flash_message %>
+  <%= display_flash_message %>
 
   <%= render 'index' %>
 
   <ul class="predefined_filters">
-    <li>
-      <%= link_to Typus::I18n.t("All"), params.dup.cleanup.merge(:action => 'index') %>
+    
+      <%= link_to Typus::I18n.t("Display All"), params.dup.cleanup.merge(:action => 'index') %>
       <%= "(#{resource.count})" if @resource.typus_options_for(:counters) %>
-    </li>
-
-    <% @resource.typus_scopes.each do |scope| %>
+    
+    <% begin %>
+    <% scopes.each do |scope| %>
       <li>
         <%= link_to Typus::I18n.t(scope.humanize), :scope => scope %>
         <%= "(#{@resource.send(scope).count})" if @resource.typus_options_for(:counters)  %>
       </li>
+    <% end %>
+    <% rescue %>
     <% end %>
 
     <% predefined_filters.each do |filter, action, scope| %>
@@ -43,10 +45,12 @@
     <% end %>
   </ul>
 
-  <% if (build_filters || admin_search) %>
+  <% if (build_filters || search) %>
     <div class="filters">
-      <%= build_filters %>
-      <%= admin_search %>
+      <div class="well">
+        <%= build_filters %>
+        <%= search %>
+      </div>
     </div>
   <% end %>
 
@@ -58,14 +62,14 @@
     <% end %>
     <%= admin_paginate(@items, Typus.pagination) %>
   <% else %>
-    <p><%= Typus::I18n.t("No entries found.") %></p>
+    <p><%= Typus::I18n.t("No %{resources} found.", :resources => @resource.model_name.human(:count => 2)) %></p>
   <% end %>
 
 <% end %>
 
-<div class="grid_2">
-  <%= build_sidebar %>
-</div>
+<%#= content_for :left_side do %>
+  <%#= build_sidebar %>
+<%# end %>
 
 <div class="grid_10">
   <%= yield :main_grid %>

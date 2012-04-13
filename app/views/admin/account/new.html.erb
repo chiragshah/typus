@@ -1,12 +1,21 @@
 <%
   page_title = Typus::I18n.t("Sign up")
-  admin_title(page_title)
+  title(page_title)
 %>
 
-<%= form_for Typus.user_class_as_symbol,
-             :url => { :action => :create } do |form| %>
+<%= form_for :typus_user, :url => { :action => :create } do |form| %>
 
-  <%= render :partial => "form",
-             :locals => { :form => form, :submit_text => "Sign up" } %>
+  <ul>
+
+    <li>
+      <%= form.label :email, Typus.user_class.human_attribute_name(:email) %>
+      <%= form.text_field :email, :size => 20, :class => "text", :autofocus => 'autofocus' %>
+    </li>
+
+    <li>
+      <%= submit_tag Typus::I18n.t("Sign up"), :class => "button", :disable_with => Typus::I18n.t("Sending data ...") %>
+    </li>
+
+  </ul>
 
 <% end %>

@@ -3,16 +3,48 @@
 <html lang="<%= I18n.locale %>">
 
 <head>
-  <%= render 'admin/shared/head' %>
+  <%= stylesheet_link_tag 'typus-admin/application' %>
+  <%#= stylesheet_link_tag "application", :media => "all" %>
 </head>
 
-<body id="account">
 
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/"><%= Typus.admin_title %></a>
+        <div class="nav-collapse">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<body id="account">
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <%= display_flash_message %>
+      <%= yield :layout %>
+      <% if content_for?(:actions) %>
+        <div id="actions">
+          <%= yield :actions %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--
   <div id="wrapper">
 
     <div id="box">
       <h1 class="logo"><%= Typus.admin_title %></h1>
-      <%= admin_display_flash_message %>
+      <%= display_flash_message %>
       <%= yield :layout %>
     </div>
 
@@ -23,7 +55,7 @@
     <% end %>
 
   </div>
-
+-->
 </body>
 
 </html>

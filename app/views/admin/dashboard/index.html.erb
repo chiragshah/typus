@@ -1,11 +1,11 @@
 <%
   page_title = Typus::I18n.t("Dashboard")
-  admin_title(page_title)
+  title(page_title)
 %>
 
-<div class="grid_2">
+<%= content_for :left_side do %>
   <%= render 'admin/dashboard/sidebar' %>
-</div>
+<% end %>
 
 <div class="grid_10">
   <%= render 'admin/dashboard/widgets/applications' %>
