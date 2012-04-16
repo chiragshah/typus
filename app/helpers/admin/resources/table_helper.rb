@@ -13,6 +13,17 @@ module Admin::Resources::TableHelper
     render "helpers/admin/resources/table", locals
   end
 
+  def action_image(message)
+    case message
+    when 'Edit'
+      return "<i class='icon-pencil'></i>".html_safe
+    when 'Trash'
+      return "<i class='icon-remove'></i>".html_safe
+    else
+      return message
+    end
+  end
+
   def table_header(model, fields, params = params)
     fields.map do |key, value|
 
