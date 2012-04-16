@@ -38,7 +38,7 @@ Installing
 
 Add **Typus** to your `Gemfile`:
 
-    gem 'typus'
+    gem 'typus', :git => 'git://github.com/chiragshah/typus.git'
 
     # Bundle edge Typus instead:
     # gem 'typus', :git => 'git://github.com/chiragshah/typus.git'
