@@ -4,10 +4,9 @@
 
 <head>
   <%= stylesheet_link_tag 'typus-admin/application' %>
-  <%#= stylesheet_link_tag "application", :media => "all" %>
 </head>
 
-
+<body id="account">
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -24,38 +23,20 @@
   </div>
 
 
-<body id="account">
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <%= admin_display_flash_message %>
-      <%= yield :layout %>
-      <% if content_for?(:actions) %>
-        <div id="actions">
-          <%= yield :actions %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!--
-  <div id="wrapper">
-
-    <div id="box">
-      <h1 class="logo"><%= Typus.admin_title %></h1>
-      <%#= display_flash_message %>
-      <%= yield :layout %>
-    </div>
-
-    <% if content_for?(:actions) %>
-      <div id="actions">
-        <%= yield :actions %>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <%= admin_display_flash_message %>
+        <%= yield :layout %>
+        <% if content_for?(:actions) %>
+          <div id="actions">
+            <%= yield :actions %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-
+    </div>
   </div>
--->
+
 </body>
 
 </html>
