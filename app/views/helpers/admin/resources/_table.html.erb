@@ -26,9 +26,8 @@
         </td>
       <% end %>
       <% table_fields_for_item(item, fields).each_with_index do |field, index| %>
-        <td>
-          <%= field %>
-          <% if (index + 1) == table_fields_for_item(item, fields).size %>
+        <% if (index + 1) == table_fields_for_item(item, fields).size %>
+          <td>
             <div class="actions icon">
                 <% table_actions(model, item, association_name).each_with_index do |action, index| %>
                   <%= "|" unless index.zero? %>
@@ -38,8 +37,10 @@
                   </span>
                 <% end %>
             </div>
-          <% end %>
-        </td>
+          </td>
+        <% else %>
+          <td><%= field %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
