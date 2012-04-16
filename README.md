@@ -1,6 +1,8 @@
 Typus: Admin Panel for Ruby on Rails applications
 =================================================
 
+Redesign typus with bootstrap, all other functionalities are from typus
+
 **Typus** is a control panel for [Ruby on Rails][rails] applications to
 allow trusted users edit structured content.
 
@@ -38,12 +40,14 @@ Add **Typus** to your `Gemfile`:
     gem 'typus'
 
     # Bundle edge Typus instead:
-    # gem 'typus', :git => 'git://github.com/fesplugas/typus.git'
+    # gem 'typus', :git => 'git://github.com/chiragshah/typus.git'
 
 Update your bundle, run the generator and start the application server:
 
     $ bundle install
     $ rails generate typus
+    $ rails generate typus:migration
+    $ rake db:migrate
     $ rails server
 
 and go to <http://0.0.0.0:3000/admin>.
@@ -61,7 +65,7 @@ Create a PostgreSQL database:
 
 To test, clone the repo and run the following commands:
 
-    $ git clone git://github.com/fesplugas/typus.git
+    $ git clone git://github.com/chiragshah/typus.git
     $ bundle install --path vendor/bundle
     $ bundle exec rake
 
