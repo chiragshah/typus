@@ -1,7 +1,8 @@
 Typus: Admin Panel for Ruby on Rails applications
 =================================================
 
-Redesign typus with bootstrap, all other functionalities are from typus
+**Redesign typus with bootstrap, all other functionalities are from typus**
+===========================================================================
 
 **Typus** is a control panel for [Ruby on Rails][rails] applications to
 allow trusted users edit structured content.
