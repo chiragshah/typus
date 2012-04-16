@@ -26,23 +26,19 @@
         </td>
       <% end %>
       <% table_fields_for_item(item, fields).each_with_index do |field, index| %>
-        <td>
-          <%= field %>
-          <% if (index + 1) == table_fields_for_item(item, fields).size %>
-            <td>
-            <div class="actions icon">
-                <% table_actions(model, item, association_name).each_with_index do |action, index| %>
-                  <%= "|" unless index.zero? %>
-                  <% action_img = action_image(action[:message]) %>
-                  <span rel="tooltip" data-original-title="<%= action[:message] %>" class='tool-tip'>
-                    <%= link_to action_img, action[:url], action[:options] %>
-                  </span>
-                <% end %>
-            </div>
-            </td>
-          <% end %>
-        </td>
+        <td><%= field %></td>
       <% end %>
+      <td>
+        <div class="actions icon">
+          <% table_actions(model, item, association_name).each_with_index do |action, index| %>
+            <%= "|" unless index.zero? %>
+            <% action_img = action_image(action[:message]) %>
+            <span rel="tooltip" data-original-title="<%= action[:message] %>" class='tool-tip'>
+              <%= link_to action_img, action[:url], action[:options] %>
+            </span>
+          <% end %>
+        </div>
+      </td>
     </tr>
   <% end %>
 
