@@ -23,27 +23,21 @@
 <% if applications.any? %>
   <% applications.each do |app| %>
 
-    <table style="margin-bottom: 1em;">
+    <ul class="nav nav-list">
 
       <% table_header = application ? "Models" : app %>
 
-      <thead>
-        <tr>
-          <th><%= Typus::I18n.t(table_header) %></th>
-        </tr>
-      </thead>
+      <li class="nav-header"><%= Typus::I18n.t(table_header) %></li>
 
       <% admin_user.application(app).map(&:constantize).each do |klass| %>
         <% if klass.typus_options_for(:hide_from_dashboard) == false %>
-          <tr class="<%= cycle("even", "odd") %>">
-            <td>
+          <li>
               <%= link_to klass.model_name.human.pluralize, :controller => "/admin/#{klass.to_resource}" %>
-            </td>
-          </tr>
+            </li>
         <% end %>
       <% end %>
 
-    </table>
+    </ul>
 
   <% end %>
 <% else %>

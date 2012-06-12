@@ -1,4 +1,4 @@
-<div id="filters" style="float:left;">
+<div id="filters">
   <%= form_tag nil, :method => :get, :class => 'form-inline' do %>
       <% filters.each do |filter| %>
         <% key, value = filter[:key], filter[:value] %>
@@ -10,5 +10,7 @@
       <% end %>
 
       <%= submit_tag Typus::I18n.t("Filter"), :name => nil, :disable_with => Typus::I18n.t("Sending data ..."),:class => 'btn' %>
+      <%= admin_search %>
   <% end %>
 </div>
+<div style="clear:both;"></div>

@@ -36,7 +36,8 @@
         <a class="brand" href="/admin"><%= Typus.admin_title %> Admin Panel</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <%= admin_apps.gsub('<ul>','').gsub('</ul>','').html_safe %>
+            <%#= admin_apps.gsub('<ul>','').gsub('</ul>','').html_safe %>
+            <li><%= link_to 'Dashboard', '/admin/dashboard' %></li>
           </ul>
     <ul class="nav nav-pills">
       <li class="dropdown">
@@ -84,8 +85,8 @@
 -->
 <div class="container">
   <div class="row">
-    <!-- <div class="span3"><%#= yield :left_side %></div> -->
-    <div class="span12"><%= yield :layout %></div>
+    <div class="span3"><%#= yield :left_side %><%= render 'admin/dashboard/sidebar' %></div>
+    <div class="span9"><%= yield :layout %></div>
   </div>
 </div>
 <!--
@@ -107,7 +108,7 @@
         <a class="brand" href="#"></a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li>Powered By Requestz</li>
+            <li>Powered By <%= Typus.admin_title %></li>
           </ul>
         </div>
       </div>
