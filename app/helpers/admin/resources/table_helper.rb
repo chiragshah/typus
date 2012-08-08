@@ -19,6 +19,8 @@ module Admin::Resources::TableHelper
       return "<i class='icon-pencil'></i>".html_safe
     when 'Trash'
       return "<i class='icon-remove'></i>".html_safe
+    when 'Show'
+      return "<i class='icon-info-sign'></i>".html_safe
     else
       return message
     end
