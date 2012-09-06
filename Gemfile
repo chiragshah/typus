@@ -58,6 +58,10 @@ gem "rack-cache", :require => "rack/cache"
 # Asset Management with Paperclip
 gem "paperclip", "~> 2.7.0"
 
+# Nested Form with Simple form
+gem 'simple_form'
+gem "nested_form", :git => "https://github.com/ryanb/nested_form.git"
+
 # MongoDB
 gem "mongoid", "~> 2.4.6"
 gem "bson_ext", "~> 1.6.1"
